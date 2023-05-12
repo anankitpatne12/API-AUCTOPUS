@@ -1,0 +1,16 @@
+{% extends 'users/base.html' %}
+
+{% block body %}
+
+<div class="container" style="margin-top: 40px; margin-bottom: 40px; flex-grow: 1;">
+    <div class="row">
+      <div class="col-md-8" style="background-color: black; color: rgb(255, 255, 255);">
+        <h2><span style="color: red;">{{object.student}}</span> </h2>
+        <p><span style="color: rgb(131, 131, 131);"><b>College:</b> </span>  {{object.college}}</p>
+        <p><span style="color: rgb(131, 131, 131);"><b>Email:</b></span>  {{object.email}}</p>
+    
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

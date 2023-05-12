@@ -1,0 +1,66 @@
+
+{% extends 'users/base.html' %}
+
+   {% block body %}
+   
+    <h1 class="offset-md-1" style="  padding: 10px;margin: 50px; font-family: sans-serif; color: rgb(248, 10, 10); font-weight: 900;text-align: center;align-self: center; margin: auto; width: 50%;">Students Data</h1>
+    
+    {% for item in all_users %}
+    
+    <div class="container" style="margin: 30px; flex-grow: 1;">
+        <div class="row">
+          <div class="col-md-6 offset-md-4">
+            <div class="card card-small" style="border: solid rgb(248, 10, 10) 3px;">
+            
+              <div class="card-body bg-dark" style="color: aliceblue;">
+                
+                <h3><span style="color: rgba(48, 34, 255, 0.87);">ID:</span> {{item.id}}</h3> 
+            <h5><span style="color: rgba(48, 34, 255, 0.87);">Name:</span> {{item.student}}</h5>
+            <h5><span style="color: rgba(48, 34, 255, 0.87);">Email:</span> {{item.email}}</h5>
+            <h5><span style="color: rgba(48, 34, 255, 0.87);">College: </span> {{item.college}}</h5>
+            <a href="{% url 'users:detail' item.id %}" class="btn btn-outline-info" style="margin-right: 5px;">View</a>
+            <a href="{% url 'users:update' item.id %}" class="btn btn-outline-primary " style="margin-right: 5px;">Update</a>
+            <a class="btn btn-outline-danger delete-entry" data-entry-id="{{ item.id }}">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <h1 class="offset-md-1" style="  padding: 10px;margin: 50px; font-family: sans-serif; color: rgb(10, 54, 248); font-weight: 900;text-align: center;align-self: center; margin: auto; width: 50%;">No Data Found</h1>
+    {% endfor %}
+    
+    
+ 
+   {% endblock %}
+
+   {% block script %}
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+    
+
+   $(document).ready(function() {
+     $('.delete-entry').click(function(event) {
+       event.preventDefault(); 
+       var entryId = $(this).data('entry-id');
+       $.ajax({
+         url: 'http://127.0.0.1:8000/users/' + entryId + '/', 
+         method: 'DELETE',
+         success: function(response) {
+           console.log('Entry deleted successfully:', response);
+           location.reload();
+         },
+         error: function(error) {
+           console.error('Failed to delete the entry:', error);
+         }
+       });
+     });
+   });
+   </script> 
+ 
+   {% endblock %}
+
+
+
+
+
