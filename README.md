@@ -1,6 +1,7 @@
 # Setting up and Running the Project Documentation
 
 This documentation provides step-by-step instructions on how to set up and run the project. Follow these steps to get the project up and running on your local development environment.
+The project report and documentation files are available in the repository for anyone who wants to refer to them.
 
 Prerequisites:
 •	Python: Ensure that Python is installed on your system. You can download and install Python from the official website (https://www.python.org).
